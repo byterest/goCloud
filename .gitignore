@@ -1,2 +1,3 @@
-images/*
+public/images/*
+!public/images/logo
 image.db

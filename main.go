@@ -35,7 +35,7 @@ func main() {
 		ext := path.Ext(file.Filename)
 		filename := hex.EncodeToString(token) + ext
 
-		if err := c.SaveUploadedFile(file, "images/"+filename); err != nil {
+		if err := c.SaveUploadedFile(file, "public/images/"+filename); err != nil {
 			c.String(http.StatusBadRequest, fmt.Sprintf("upload file err: %s", err.Error()))
 			return
 		}
