@@ -1,3 +1,4 @@
 public/images/*
 !public/images/logo
 image.db
+goCloud.exe
