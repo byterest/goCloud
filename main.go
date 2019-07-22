@@ -9,9 +9,12 @@ import (
 
 func main() {	
 	router := gin.Default()
-	router.Static("/index", "./public")
-	router.GET("/", func(c *gin.Context){
-		c.Redirect(301, "/index")
+	router.Static("/media","./public/")
+	router.LoadHTMLGlob("templates/*")
+	router.GET("/", func (c *gin.Context)  {
+		c.HTML(200, "index.html", gin.H{
+			"title": "Main website",
+		})
 	})
 	router.GET("/setup", func(c *gin.Context){
 		db, err := gorm.Open("sqlite3", "image.db")
@@ -20,7 +23,8 @@ func main() {
 		}
 		defer db.Close()
 		db.AutoMigrate(&Image{})
-	})	
+	})
+	router.GET("/all",getALL)	
 	router.POST("/upload", Upload)
 	router.Run(":8080")
 }
