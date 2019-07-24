@@ -4,11 +4,28 @@
         <title>
             goCloud
         </title>
+        <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
     </head>
     <body>
-        {{range .images}}
-        <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
-        <br/>
-        {{end}}
+        <div class="flex-vertical" style="height: 30px;">
+                <div class="unit"style="height:30px">
+                <img src="/media/images/logo/logo.jpg" alt="" style="height: 30px;margin-left:30px">
+                </div>
+                <div class="unit">
+                        <div class="flex-left">
+                                <div class="unit"></div>
+                                <div class="unit">
+                                        {{range .images}}
+                                        <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
+                                        <br/>
+                                        {{end}}
+                                </div>
+                                <div class="unit"></div>
+                            </div>
+                </div>
+                
+        </div>
+        
+       
     </body>
 </html>

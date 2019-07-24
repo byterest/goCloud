@@ -18,3 +18,9 @@ func getALL(c *gin.Context){
 			"images": images,
 		})
 }
+
+func up(c *gin.Context){
+	c.HTML(200, "index.html", gin.H{
+		"title": "Main website",
+	})
+}

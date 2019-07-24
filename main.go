@@ -11,11 +11,7 @@ func main() {
 	router := gin.Default()
 	router.Static("/media","./public/")
 	router.LoadHTMLGlob("templates/*")
-	router.GET("/up", func (c *gin.Context)  {
-		c.HTML(200, "index.html", gin.H{
-			"title": "Main website",
-		})
-	})
+	router.GET("/up", up)
 	router.GET("/setup", func(c *gin.Context){
 		db, err := gorm.Open("sqlite3", "image.db")
 		if err != nil {
