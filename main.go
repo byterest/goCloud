@@ -11,7 +11,7 @@ func main() {
 	router := gin.Default()
 	router.Static("/media","./public/")
 	router.LoadHTMLGlob("templates/*")
-	router.GET("/", func (c *gin.Context)  {
+	router.GET("/up", func (c *gin.Context)  {
 		c.HTML(200, "index.html", gin.H{
 			"title": "Main website",
 		})
@@ -24,7 +24,7 @@ func main() {
 		defer db.Close()
 		db.AutoMigrate(&Image{})
 	})
-	router.GET("/all",getALL)	
+	router.GET("/",getALL)	
 	router.POST("/upload", Upload)
 	router.Run(":8080")
 }
