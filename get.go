@@ -13,7 +13,7 @@ func getALL(c *gin.Context){
 		}
 		defer db.Close()
 		var images []Image	
-		db.Find(&images)
+		db.Order("created_at desc").Find(&images)
 		c.HTML(200, "all.html", gin.H{
 			"images": images,
 		})
