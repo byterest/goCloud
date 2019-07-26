@@ -8,4 +8,5 @@ import (
 type Image struct {
 	gorm.Model
 	ImageUrl string
+	FileName string `gorm:"default:'NoName'"`
 }

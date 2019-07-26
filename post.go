@@ -20,7 +20,13 @@ func Upload(c *gin.Context) {
 	h := md5.New()
 	io.WriteString(h, strconv.FormatInt(unixT,10))
 	token := h.Sum(nil)
+	
 	file, err := c.FormFile("file") // err can handle the file did not exist
+	if err != nil {
+		c.String(http.StatusBadRequest, fmt.Sprintf("get form err: %s", err.Error()))
+		return
+	}
+	newFileName := c.PostForm("filename")
 	if err != nil {
 		c.String(http.StatusBadRequest, fmt.Sprintf("get form err: %s", err.Error()))
 		return
@@ -37,6 +43,6 @@ func Upload(c *gin.Context) {
 		panic("cant not open")
 		}
 		defer db.Close()
-		db.Create(&Image{ImageUrl: filename})
-		c.String(http.StatusOK, fmt.Sprintf("File %s uploaded successfully in images/%s", file.Filename,filename))
+		db.Create(&Image{ImageUrl: filename,FileName: newFileName})
+		c.Redirect(301, "/")
 }

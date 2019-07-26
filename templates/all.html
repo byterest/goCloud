@@ -20,8 +20,17 @@
                         <div class="flex-left">
                                 <div class="unit">
                                     <div style="margin-left: 30px">
+                                        
+
+
+
                                             {{range .images}}
-                                            <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
+                                            {{ if .FileName }}
+                                            <a href="/media/images/{{.ImageUrl}}">{{.FileName}}</a>
+                                                        {{ else }}
+                                                        <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
+                                                            {{ end }}
+                                            
                                             <br/>
                                             {{end}}
                                     </div>
