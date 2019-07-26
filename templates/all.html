@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>
-            goCloud
-        </title>
-        <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    </head>
-    <body>
-        <div class="flex-vertical" >
-                <div class="unit"style="height:30px">
-                <img src="/media/images/logo/logo.jpg" alt="" style="height: 30px;margin-left:30px">
-                </div>
-                <blockquote>
-                    <p> It is a cloud to share study free resource </p>
-                </blockquote>
-                <div class="unit" style="margin-top:30px; ">
-                        <div class="flex-left">
-                                <div class="unit">
-                                    <div style="margin-left: 30px">
-                                        
 
+<head>
+    <title>
+        goCloud
+    </title>
+    <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
 
-
-                                            {{range .images}}
-                                            {{ if .FileName }}
-                                            <a href="/media/images/{{.ImageUrl}}">{{.FileName}}</a>
-                                                        {{ else }}
-                                                        <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
-                                                            {{ end }}
-                                            
-                                            <br/>
-                                            {{end}}
-                                    </div>
-                                        
-                                </div>
-                                <div class="unit"></div>
-                                
-                                <div class="unit"></div>
-                            </div>
-                </div>
-                <div class="unit-1-4" style="margin-top: 100px;margin-left: 100px">pride@prejudice.io copyright 2019</div>
+<body>
+    <div class="flex-vertical">
+        <div class="unit" style="height:30px">
+            <img src="/media/images/logo/logo.jpg" alt="" style="height: 30px;margin-left:30px">
         </div>
-        
-       
-    </body>
+        <blockquote>
+            <p> It is a cloud to share study free resource </p>
+        </blockquote>
+        <div class="unit" style="margin-top:30px; ">
+            <div class="flex-left">
+                <div class="unit">
+                    <div style="margin-left: 30px;">
+                        {{range .images}}
+                        {{ if .FileName }}
+                        <a href="/media/images/{{.ImageUrl}}">{{.FileName}}</a>
+                        {{ else }}
+                        <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
+                        {{ end }}
+                        <br />
+                        {{end}}
+                    </div>
+          </div>
+                <div class="unit"></div>
+            </div>
+        </div>
+        <div class="unit-1-4" style="margin-top: 100px;margin-left: 100px">pride@prejudice.io copyright 2019</div>
+    </div>
+
+
+</body>
+
 </html>
