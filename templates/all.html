@@ -9,23 +9,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     </head>
     <body>
-        <div class="flex-vertical" style="height: 30px;">
+        <div class="flex-vertical" >
                 <div class="unit"style="height:30px">
                 <img src="/media/images/logo/logo.jpg" alt="" style="height: 30px;margin-left:30px">
                 </div>
-                <div class="unit">
+                <blockquote>
+                    <p> It is a cloud to share study free resource </p>
+                </blockquote>
+                <div class="unit" style="margin-top:30px; ">
                         <div class="flex-left">
-                                <div class="unit"></div>
                                 <div class="unit">
-                                        {{range .images}}
-                                        <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
-                                        <br/>
-                                        {{end}}
+                                    <div style="margin-left: 30px">
+                                            {{range .images}}
+                                            <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
+                                            <br/>
+                                            {{end}}
+                                    </div>
+                                        
                                 </div>
+                                <div class="unit"></div>
+                                
                                 <div class="unit"></div>
                             </div>
                 </div>
-                
+                <div class="unit-1-4" style="margin-top: 100px;margin-left: 100px">pride@prejudice.io copyright 2019</div>
         </div>
         
        
