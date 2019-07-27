@@ -8,15 +8,11 @@ gorm gin sqlite3
 
 
 ### How to run
-You need run
+```go
+go build
+./goCloud
 ```
-go run dbCreate.go 
-```
-to migrate the database and then run 
-```
-go run main.go
-```
-go to the browser to upload your files
+go to the browser localhost:8080/setup to migrate the database
 
 
 you will get the url after you upload it to your server
