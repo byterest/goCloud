@@ -2,25 +2,18 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-  	"github.com/jinzhu/gorm"
-	  _ "github.com/jinzhu/gorm/dialects/sqlite"
 )
 
-
-func main() {	
+func main() {
 	router := gin.Default()
-	router.Static("/media","./public/")
+	router.Static("/media", "./public/")
 	router.LoadHTMLGlob("templates/*")
-	router.GET("/up", up)
-	router.GET("/setup", func(c *gin.Context){
-		db, err := gorm.Open("sqlite3", "image.db")
-		if err != nil {
-			panic("can not open")
-		}
-		defer db.Close()
-		db.AutoMigrate(&Image{})
-	})
-	router.GET("/",getALL)	
+	router.GET("/up", Up)
+	router.GET("/write", Write)
+	router.GET("/setup", SetUp)
+	router.GET("/", GetALL)
+	router.GET("/post/:uuid", GetArticle)
 	router.POST("/upload", Upload)
+	router.POST("/writein", WriteIn)
 	router.Run(":8080")
 }

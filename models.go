@@ -10,3 +10,10 @@ type Image struct {
 	ImageUrl string
 	FileName string `gorm:"default:'NoName'"`
 }
+
+type Article struct {
+	gorm.Model
+	Title   string
+	Content string
+	UUID string
+}
