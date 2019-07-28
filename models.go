@@ -15,5 +15,5 @@ type Article struct {
 	gorm.Model
 	Title   string
 	Content string
-	UUID string
+	UUID    string
 }

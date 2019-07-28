@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"io"
@@ -12,7 +13,6 @@ import (
 	"path"
 	"strconv"
 	"time"
-	"github.com/google/uuid"
 )
 
 func Upload(c *gin.Context) {

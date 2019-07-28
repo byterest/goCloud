@@ -14,6 +14,7 @@
     <div class="flex-vertical">
         <div class="unit" style="height:30px">
             <img src="/media/images/logo/logo.png" alt="" style="height: 30px;margin-left:30px">
+            <a href="/write">Write</a>
         </div>
         <blockquote>
             <p> It is a cloud to share study free resource </p>
@@ -22,13 +23,8 @@
             <div class="flex-left">
                 <div class="unit">
                     <div style="margin-left: 30px;">
-                        {{range .images}}
-                        {{ if .FileName }}
-                        <a href="/media/images/{{.ImageUrl}}">{{.FileName}}</a>
-                        {{ else }}
-                        <a href="/media/images/{{.ImageUrl}}">{{.ImageUrl}}</a>
-                        {{ end }}
-                        <br />
+                        {{range .articles}}
+                            <a href="/post/{{.UUID}}">{{.Title}}</a><br>
                         {{end}}
                     </div>
                 </div>

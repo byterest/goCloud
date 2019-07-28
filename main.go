@@ -12,6 +12,7 @@ func main() {
 	router.GET("/write", Write)
 	router.GET("/setup", SetUp)
 	router.GET("/", GetALL)
+	router.GET("/articles", GetArticles)
 	router.GET("/post/:uuid", GetArticle)
 	router.POST("/upload", Upload)
 	router.POST("/writein", WriteIn)

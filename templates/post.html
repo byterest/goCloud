@@ -9,10 +9,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/default.min.css">
     <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+            body {
+                margin: 0 auto;
+                width: 52em;
+            }
+            img {
+                margin: 0 auto;
+                width: 50%;
+            }
+            @media all and (max-width: 768px) {
+               body {
+                   margin: 0 0;
+                   width: 100%;
+               }
+            }
+        </style>
 </head>
 
 <body>
-    <p>{{.title}}</p>
+    <p style="text-align: center;">{{.title}}</p>
     <div id="md">
     </div>
 

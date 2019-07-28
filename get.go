@@ -40,7 +40,7 @@ func SetUp(c *gin.Context) {
 	db.AutoMigrate(&Image{}, &Article{})
 }
 
-func GetArticle(c *gin.Context)  {
+func GetArticle(c *gin.Context) {
 	uuid := c.Param("uuid")
 	db, err := gorm.Open("sqlite3", "image.db")
 	if err != nil {
@@ -52,7 +52,19 @@ func GetArticle(c *gin.Context)  {
 	title := article.Title
 	content := article.Content
 	c.HTML(200, "post.html", gin.H{
-		"title": title,
+		"title":   title,
 		"content": content,
+	})
+}
+
+func GetArticles(c *gin.Context) {
+	db, err := gorm.Open("sqlite3", "image.db")
+	if err != nil {
+		panic("can not open the db")
+	}
+	var articles []Article
+	db.Find(&articles)
+	c.HTML(200, "allarticle.html", gin.H{
+		"articles": articles,
 	})
 }
