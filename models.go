@@ -17,3 +17,9 @@ type Article struct {
 	Content string
 	UUID    string
 }
+
+type Language struct {
+	gorm.Model
+	Language string
+	LogoUrl string
+}

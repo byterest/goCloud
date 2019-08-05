@@ -8,32 +8,67 @@
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        body {
+            margin: 0 auto;
+            width: 52em;
+        }
+        .main {
+            background-color:aliceblue;
+            height: 100%;
+        }
+        .cell {
+            margin: 4px 0;
+            font-size: 14px;
+            border-bottom: 1px solid;
+            border-color: #e2e2e2;
+            height: 25px;
+        }
+        .item {
+            margin-left: 2px;
+        }
+        .logo {
+            margin: 0;
+            white-space:nowrap;
+        }
+        .header {
+            border-bottom: 1px solid;
+            border-color: #e2e2e2;
+        }
+        .controller {
+            margin-left: 3px;
+        }
+        @media all and (max-width: 768px) {
+           body {
+               margin: 0 auto;
+               width: 100%;
+           }
+           #md {
+               margin: 0 3px;
+           }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="flex-vertical">
-        <div class="unit" style="height:30px">
-            <img src="/media/images/logo/logo.png" alt="" style="height: 30px;margin-left:30px">
-            <a href="/write">Write</a>
+    <div class="main">
+        <div class="header">
+                <span class="logo">Prejudice</span> <span class="controller"> <a href="/write">NEW</a> </span> 
         </div>
-        <blockquote>
-            <p> It is a cloud to share study free resource </p>
-        </blockquote>
-        <div class="unit" style="margin-top:30px; ">
-            <div class="flex-left">
-                <div class="unit">
-                    <div style="margin-left: 30px;">
-                        {{range .articles}}
-                            <a href="/post/{{.UUID}}">{{.Title}}</a><br>
-                        {{end}}
-                    </div>
+             
+            <div>
+                {{range .articles}}
+                <div class="cell">
+                        <div class="item">
+                                <a href="/post/{{.UUID}}">{{.Title}}</a><br>
+                        </div>
+                        
                 </div>
+                    
+                {{end}}
             </div>
-        </div>
-        <div class="unit-1-4" style="margin-top: 100px;margin-left: 100px">pride@prejudice.io copyright 2019</div>
     </div>
-
-
+            
 </body>
 
 </html>

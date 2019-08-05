@@ -3,39 +3,44 @@
 
 <head>
     <meta charset="utf-8">
-    <title>ImageCloud</title>
+    <title>NEW</title>
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+            body {
+                margin: 0 auto;
+                width: 52em;
+            }
+            textarea {
+                resize: none;
+                width: 100%;
+                height: 250px;
+            }
+
+            @media all and (max-width: 768px) {
+               body {
+                   margin: 0 auto;
+                   width: 100%;
+               }
+            }
+            #button {
+                float: right;
+            }
+            #title {
+                font-size: 15px;
+                height: 30px;
+                width: 30%;
+            }
+        </style>
 </head>
-
 <body>
-    <h1>ImageCloud</h1>
-
+    <h1>NEW</h1>
     <form action="/writein" method="post" enctype="multipart/form-data">
-        Title:<input type="text" name="title"><br><br>
-        Content: <textarea type="text" name="content"></textarea><br><br>
-        <input type="submit" value="Submit">
+        <label for="title">Title:</label><br>
+        <input id="title" type="text" name="title"><br><br>
+        <label for="content">Content:</label><br>
+        <textarea  type="text" name="content"></textarea><br><br>
+        <input id="button" type="submit" value="Submit">
     </form>
-
-
-
-    <link rel="stylesheet" href="editormd/css/editormd.css" />
-<div id="test-editor">
-    <textarea style="display:none;">### Editor.md
-
-**Editor.md**: The open source embeddable online markdown editor, based on CodeMirror & jQuery & Marked.
-    </textarea>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="editormd/editormd.min.js"></script>
-<script type="text/javascript">
-    $(function() {
-        var editor = editormd("test-editor", {
-            // width  : "100%",
-            // height : "100%",
-            path   : "editormd/lib/"
-        });
-    });
-</script>
 </body>
