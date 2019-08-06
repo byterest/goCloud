@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>{{.title}}</title>
+    <!-- twitter card-->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@luowanshun">
     <meta name="twitter:title" content="{{.title}}">
@@ -11,45 +12,89 @@
     <meta name="twitter:creator" content="@luowanshun">
     <meta name="twitter:domain" content="prejudice.io">
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
-    <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/default.min.css">
     <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134629345-6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134629345-6');
+    </script>
     <style>
+        body {
+            margin: 0 auto;
+            width: 52em;
+        }
+
+        img {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: 70%;
+        }
+
+        .pmain {
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        code {
+            font-family: consolas, sans-serif;
+        }
+
+        .title {
+            font-size: 20px;
+        }
+
+        @media all and (max-width: 768px) {
             body {
                 margin: 0 auto;
-                width: 52em;
+                width: 100%;
             }
+
+            .md {
+                margin: 0 3px;
+            }
+
             img {
                 margin-left: auto;
                 margin-right: auto;
                 display: block;
-                width: 50px;
+                width: 95%;
             }
-            @media all and (max-width: 768px) {
-               body {
-                   margin: 0 auto;
-                   width: 100%;
-               }
-               #md {
-                   margin: 0 3px;
-               }
-            }
-        </style>
+        }
+    </style>
 </head>
 
 <body>
-    <p style="text-align: center;">{{.title}}</p>
-    <div id="md">
+    <p class="title" style="text-align: center;">{{.title}}</p>
+    <div class="pmain">
+        <div id="md">
+        </div>
     </div>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
     <script>
         function render() {
             var a = document.getElementById("md");
             var converter = new showdown.Converter();
-            text = {{.content }};
+            text = {{.content }
+        };
         html = converter.makeHtml(text);
         a.innerHTML = html;
         console.log(html);
