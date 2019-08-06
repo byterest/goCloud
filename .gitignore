@@ -1,5 +1,5 @@
 public/images/*
-!public/images/logo/logo.png
+!logo.png
 image.db
 goCloud.exe
 public/sitemaps/*
