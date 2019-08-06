@@ -64,7 +64,7 @@ func GetArticles(c *gin.Context) {
 		panic("can not open the db")
 	}
 	var articles []Article
-	db.Find(&articles)
+	db.Order("created_at desc").Find(&articles)
 	c.HTML(200, "allarticle.html", gin.H{
 		"articles": articles,
 	})
