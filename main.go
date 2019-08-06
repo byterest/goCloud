@@ -14,6 +14,7 @@ func main() {
 	router.GET("/", GetArticles)
 	router.GET("/resources", GetALL)
 	router.GET("/post/:uuid", GetArticle)
+	router.GET("/sitemapg", Generate)
 	router.POST("/upload", Upload)
 	router.POST("/writein", WriteIn)
 	router.Run(":8080")

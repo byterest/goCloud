@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"gopkg.in/ikeikeikeike/go-sitemap-generator.v2/stm"
 )
 
 func GetALL(c *gin.Context) {
@@ -67,4 +68,26 @@ func GetArticles(c *gin.Context) {
 	c.HTML(200, "allarticle.html", gin.H{
 		"articles": articles,
 	})
+}
+
+func Generate(c *gin.Context) {
+	db, err := gorm.Open("sqlite3", "image.db")
+	if err != nil {
+		panic("can not open the db")
+	}
+	var articles []Article
+	db.Find(&articles)
+	sm := stm.NewSitemap(1)
+	sm.Create()
+	sm.SetCompress(false)
+	sm.SetPublicPath("public/")
+	sm.SetDefaultHost("https://www.prejudice.io")
+	sm.Add(stm.URL{{"loc", ""}, {"changefreq", "always"}, {"mobile", true}})
+	sm.Add(stm.URL{{"loc", "readme"}})
+	sm.Add(stm.URL{{"loc", "aboutme"}, {"priority", 0.1}})
+	for _,v := range articles {
+			sm.Add(stm.URL{{"loc", "post/"+v.UUID}})
+	}
+	sm.SetVerbose(true)
+	sm.Finalize()
 }
