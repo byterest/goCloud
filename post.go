@@ -13,6 +13,8 @@ import (
 	"path"
 	"strconv"
 	"time"
+	"golang.org/x/crypto/bcrypt"
+	"github.com/gin-contrib/sessions"
 )
 
 func Upload(c *gin.Context) {
@@ -58,4 +60,46 @@ func WriteIn(c *gin.Context) {
 	defer db.Close()
 	db.Create(&Article{Title: title, Content: content, UUID: uuid})
 	c.Redirect(301, "/")
+}
+
+func SignupPost(c *gin.Context)  {
+	username := c.PostForm("username")
+	password := c.PostForm("password")
+	password1 := c.PostForm("password1")
+	if password != password1 {
+		panic("cant not open")
+	}
+	db, err := gorm.Open("sqlite3", "image.db")
+	if err != nil {
+		panic("can not open")
+	}
+	defer db.Close()
+	hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	password = string(hash)
+	db.Create(&User{UserName: username, Password: password})
+	c.Redirect(301, "/")
+}
+
+func LoginPost(c *gin.Context)  {
+	username := c.PostForm("username")
+	password := c.PostForm("password")
+	db, err := gorm.Open("sqlite3", "image.db")
+	if err != nil {
+		panic("can not open")
+	}
+	hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	password2 := string(hash)
+	if err != nil {
+		panic("can not create")
+	}
+	var user User
+	db.Where("user_name = ?", username).First(&user)
+	err = bcrypt.CompareHashAndPassword([]byte(password2), []byte(password))
+	session := sessions.Default(c)
+	if err != nil {
+		panic("pass")
+	}
+	
+	session.Set("user", username)
+	session.Save()
 }

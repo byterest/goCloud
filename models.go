@@ -23,3 +23,9 @@ type Language struct {
 	Language string
 	LogoUrl string
 }
+
+type User struct {
+	gorm.Model
+	UserName string
+	Password string
+}

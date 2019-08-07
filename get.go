@@ -5,6 +5,7 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"gopkg.in/ikeikeikeike/go-sitemap-generator.v2/stm"
+	"github.com/gin-contrib/sessions"
 )
 
 func GetALL(c *gin.Context) {
@@ -38,7 +39,7 @@ func SetUp(c *gin.Context) {
 		panic("can not open")
 	}
 	defer db.Close()
-	db.AutoMigrate(&Image{}, &Article{})
+	db.AutoMigrate(&Image{}, &Article{}, &User{})
 }
 
 func GetArticle(c *gin.Context) {
@@ -90,4 +91,24 @@ func Generate(c *gin.Context) {
 	}
 	sm.SetVerbose(true)
 	sm.Finalize()
+}
+
+func Signup(c *gin.Context)  {
+	session := sessions.Default(c)
+	user := session.Get("user")
+	if user != nil {
+		c.Redirect(301, "/")
+	}
+	c.HTML(200, "register.html", gin.H{
+	})
+}
+
+func Login(c *gin.Context)  {
+	c.HTML(200, "login.html", gin.H{
+	})
+}
+
+func Logout(c *gin.Context)  {
+	session := sessions.Default(c)
+	session.Delete("user")
 }
