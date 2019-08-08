@@ -9,8 +9,9 @@ gorm gin sqlite3
 
 ### How to run
 ```go
+git clone https://github.com/luowanshun/goCloud.git
 go build
-./goCloud
+sh start.sh
 ```
 go to the browser localhost:8080/setup to migrate the database
 
