@@ -14,8 +14,8 @@ func main() {
 	store := cookie.NewStore([]byte("secret"))
 	router.Use(sessions.Sessions("mysession", store))
 	// Get Method
-	router.GET("/up", Up)
-	router.GET("/write", Write)
+	router.GET("/files/upload", Up)
+	router.GET("/p/new", Write)
 	router.GET("/setup", SetUp)
 	router.GET("/", GetArticles)
 	router.GET("/resources", GetALL)

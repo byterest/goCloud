@@ -28,6 +28,11 @@ func Up(c *gin.Context) {
 }
 
 func Write(c *gin.Context) {
+	session := sessions.Default(c)
+	user := session.Get("user")
+	if user == nil {
+		c.Redirect(303, "/")
+	}
 	c.HTML(200, "write.html", gin.H{
 		"title": "Main website",
 	})
