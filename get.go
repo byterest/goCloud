@@ -58,7 +58,14 @@ func GetArticle(c *gin.Context) {
 	db.Where("uuid = ?", uuid).First(&article)
 	title := article.Title
 	content := article.Content
+	var user User
+	db.Model(&article).Association("User").Find(&user)
+	username := user.UserName
+	if username == "" {
+		username = "Unkown"
+	}
 	c.HTML(200, "post.html", gin.H{
+		"username": username,
 		"title":   title,
 		"content": content,
 	})

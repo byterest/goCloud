@@ -16,12 +16,8 @@ type Article struct {
 	Title   string
 	Content string
 	UUID    string
-}
-
-type Language struct {
-	gorm.Model
-	Language string
-	LogoUrl string
+	UserId int `gorm:"default:0"`
+	User User
 }
 
 type User struct {

@@ -58,7 +58,14 @@ func WriteIn(c *gin.Context) {
 		panic("cant not open")
 	}
 	defer db.Close()
-	db.Create(&Article{Title: title, Content: content, UUID: uuid})
+	session := sessions.Default(c)
+	username := session.Get("user")
+	if username != nil {
+		c.Redirect(303, "/")
+	} 
+	var user User
+	db.Where("user_name = ?", username).First(&user)
+	db.Create(&Article{Title: title, Content: content, UUID: uuid, User: user})
 	c.Redirect(301, "/")
 }
 
