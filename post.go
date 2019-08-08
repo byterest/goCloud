@@ -77,7 +77,7 @@ func SignupPost(c *gin.Context)  {
 	hash, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	password = string(hash)
 	db.Create(&User{UserName: username, Password: password})
-	c.Redirect(301, "/")
+	c.Redirect(303, "/")
 }
 
 func LoginPost(c *gin.Context)  {
@@ -102,4 +102,5 @@ func LoginPost(c *gin.Context)  {
 	
 	session.Set("user", username)
 	session.Save()
+	c.Redirect(303, "/user")
 }

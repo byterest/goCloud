@@ -24,6 +24,7 @@ func main() {
 	router.GET("/signup", Signup)
 	router.GET("/login", Login)
 	router.GET("/logout", Logout)
+	router.GET("/user", GetUser)
 	// Post Method
 	router.POST("/signup", SignupPost)
 	router.POST("/upload", Upload)

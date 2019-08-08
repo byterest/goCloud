@@ -97,13 +97,19 @@ func Signup(c *gin.Context)  {
 	session := sessions.Default(c)
 	user := session.Get("user")
 	if user != nil {
-		c.Redirect(301, "/")
-	}
+		c.Redirect(303, "/")
+	} else{
 	c.HTML(200, "register.html", gin.H{
 	})
+	}
 }
 
 func Login(c *gin.Context)  {
+	session := sessions.Default(c)
+	user := session.Get("user")
+	if user != nil {
+		c.Redirect(303, "/")
+	}
 	c.HTML(200, "login.html", gin.H{
 	})
 }
@@ -111,4 +117,15 @@ func Login(c *gin.Context)  {
 func Logout(c *gin.Context)  {
 	session := sessions.Default(c)
 	session.Delete("user")
+	session.Save()
+}
+
+func GetUser(c *gin.Context)  {
+	session := sessions.Default(c)
+	v := session.Get("user")
+	if v == nil {
+		c.String(200, "%s", "no session")
+	} else {
+		c.String(200, "%s", v)
+	}
 }
