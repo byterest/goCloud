@@ -58,6 +58,8 @@ func GetArticle(c *gin.Context) {
 	db.Where("uuid = ?", uuid).First(&article)
 	title := article.Title
 	content := article.Content
+	t := article.CreatedAt
+	time := t.Format("2006 01 02 15:04")
 	var user User
 	db.Model(&article).Association("User").Find(&user)
 	username := user.UserName
@@ -68,6 +70,7 @@ func GetArticle(c *gin.Context) {
 		"username": username,
 		"title":   title,
 		"content": content,
+		"time": time,
 	})
 }
 
