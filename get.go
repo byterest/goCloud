@@ -136,8 +136,23 @@ func GetUser(c *gin.Context)  {
 	session := sessions.Default(c)
 	v := session.Get("user")
 	if v == nil {
-		c.String(200, "%s", "no session")
-	} else {
-		c.String(200, "%s", v)
+		c.Redirect(303, "/")
 	}
+	db, err := gorm.Open("sqlite3", "image.db")
+	var user User
+	db.Where("user_name=?", v).First(&user)
+	var articles []Article
+	db.Model(&user).Related(&articles)
+	if err != nil {
+		panic("db open failed")
+	}
+	c.HTML(200, "user.html", gin.H{
+		"user": user,
+		"articles": articles,
+	})
+	
+}
+
+func GetUserInfo(c *gin.Context)  {
+	
 }

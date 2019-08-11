@@ -1,0 +1,9 @@
+<p>{{.user.UserName}}</p>
+<a href="/logout">Logout</a>
+{{range .articles}}
+<div class="cell">
+    <div class="item">
+        <a href="/post/{{.UUID}}">{{.Title}}</a><br>
+    </div>
+</div>
+{{end}}

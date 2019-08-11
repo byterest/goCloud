@@ -1,8 +1,7 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	
+	"github.com/gin-gonic/gin"	
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 )
@@ -25,10 +24,12 @@ func main() {
 	router.GET("/login", Login)
 	router.GET("/logout", Logout)
 	router.GET("/user", GetUser)
+	router.GET("/user/:username", GetUserInfo)
 	// Post Method
 	router.POST("/signup", SignupPost)
 	router.POST("/upload", Upload)
 	router.POST("/writein", WriteIn)
 	router.POST("/login", LoginPost)
+	// Run on port 8080 
 	router.Run(":8080")
 }
