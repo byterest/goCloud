@@ -59,7 +59,7 @@ func GetArticle(c *gin.Context) {
 	title := article.Title
 	content := article.Content
 	t := article.CreatedAt
-	time := t.Format("2006 01 02 15:04")
+	time := t.Format("2006-01-02")
 	var user User
 	db.Model(&article).Association("User").Find(&user)
 	username := user.UserName

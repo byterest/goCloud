@@ -3,4 +3,4 @@ public/images/*
 image.db
 goCloud.exe
 public/sitemaps/*
-
+.env

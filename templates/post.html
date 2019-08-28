@@ -12,10 +12,11 @@
     <meta name="twitter:creator" content="@luowanshun">
     <meta name="twitter:domain" content="prejudice.io">
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/xcode.min.css">
+    <link rel="stylesheet" href="/media/style/hljs.css">
     <script src="https://cdn.jsdelivr.net/npm/showdown@1.9.0/dist/showdown.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/media/style/main.css">
+    <link rel="stylesheet" href="/media/style/post.css">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134629345-6"></script>
     <script>
@@ -25,62 +26,11 @@
 
         gtag('config', 'UA-134629345-6');
     </script>
-    <style>
-        body {
-            margin: 0 auto;
-            width: 52em;
-        }
-
-        img {
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            width: 70%;
-        }
-
-        .pmain {
-            margin-bottom: 10px;
-        }
-
-        h3 {
-            font-size: 16px;
-        }
-
-        h1 {
-            font-size: 20px;
-        }
-
-        h2 {
-            font-size: 18px;
-        }
-
-        .title {
-            font-size: 20px;
-        }
-
-        @media all and (max-width: 768px) {
-            body {
-                margin: 0 auto;
-                width: 100%;
-            }
-
-            .md {
-                margin: 0 3px;
-            }
-
-            img {
-                margin-left: auto;
-                margin-right: auto;
-                display: block;
-                width: 95%;
-            }
-        }
-    </style>
 </head>
 
 <body>
     <p class="title" style="text-align: center;">{{.title}}</p>
-    <p>{{.username}} | {{.time}}</p>
+    <p id="info">user:{{.username}} time:{{.time}}</p>
     <div class="pmain">
         <div id="md">
         </div>

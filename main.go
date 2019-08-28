@@ -4,6 +4,8 @@ import (
 	"github.com/gin-gonic/gin"	
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
+	"github.com/joho/godotenv"
+	"os"
 )
 
 func main() {
@@ -30,6 +32,9 @@ func main() {
 	router.POST("/upload", Upload)
 	router.POST("/writein", WriteIn)
 	router.POST("/login", LoginPost)
+	// Get the env 
+	godotenv.Load()
+	port := os.Getenv("port")
 	// Run on port 8080 
-	router.Run(":8080")
+	router.Run(port)
 }
