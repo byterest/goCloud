@@ -111,3 +111,14 @@ func LoginPost(c *gin.Context)  {
 	session.Save()
 	c.Redirect(303, "/user")
 }
+
+func UpdatePost(c *gin.Context)  {
+	title := c.PostForm("title")
+	content := c.PostForm("content")
+	uuid := c.PostForm("uuid")
+	db := OpenDB()
+	defer db.Close()
+	var article Article
+	db.Where("uuid = ?", uuid).First(&article)
+	db.Model(&article).Updates(Article{Title: title, Content: content, Edited: true})
+}

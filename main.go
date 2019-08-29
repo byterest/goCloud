@@ -27,11 +27,13 @@ func main() {
 	router.GET("/logout", Logout)
 	router.GET("/user", GetUser)
 	router.GET("/user/:username", GetUserInfo)
+	router.GET("/post/:uuid/edit", EditPost)
 	// Post Method
 	router.POST("/signup", SignupPost)
 	router.POST("/upload", Upload)
 	router.POST("/writein", WriteIn)
 	router.POST("/login", LoginPost)
+	router.POST("/update", UpdatePost)
 	// Get the env 
 	godotenv.Load()
 	port := os.Getenv("port")

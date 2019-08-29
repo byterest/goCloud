@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+        <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     <style>
             body {
                 margin: 0 auto;
@@ -36,11 +38,15 @@
 </head>
 <body>
     <h1>NEW</h1>
-    <form action="/writein" method="post" enctype="multipart/form-data">
+    <form action="/update" method="post" enctype="multipart/form-data">
         <label for="title">Title:</label><br>
-        <input id="title" type="text" name="title"><br><br>
+        <input id="title" type="text" name="title" value="{{ .title }}"><br><br>
         <label for="content">Content:</label><br>
-        <textarea  type="text" name="content"></textarea><br><br>
-        <input id="button" type="submit" value="Submit">
+        <textarea  type="text" name="content">{{ .content }}</textarea><br><br>
+        <input type="hidden" name="uuid" value="{{ .uuid }}"/>
+        <input id="button" type="submit" value="Update">
     </form>
+    <script>
+        var simplemde = new SimpleMDE();
+    </script>
 </body>

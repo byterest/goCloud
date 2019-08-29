@@ -2,27 +2,23 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	"gopkg.in/ikeikeikeike/go-sitemap-generator.v2/stm"
 	"github.com/gin-contrib/sessions"
 )
 
 func GetALL(c *gin.Context) {
-	db, err := gorm.Open("sqlite3", "image.db")
-	if err != nil {
-		panic("can not open")
-	}
+	db := OpenDB()
 	defer db.Close()
 	var images []Image
 	db.Order("created_at desc").Find(&images)
-	c.HTML(200, "all.html", gin.H{
+	c.HTML(200, "all.tmpl", gin.H{
 		"images": images,
 	})
 }
 
 func Up(c *gin.Context) {
-	c.HTML(200, "index.html", gin.H{
+	c.HTML(200, "up.tmpl", gin.H{
 		"title": "Main website",
 	})
 }
@@ -33,26 +29,20 @@ func Write(c *gin.Context) {
 	if user == nil {
 		c.Redirect(303, "/")
 	}
-	c.HTML(200, "write.html", gin.H{
+	c.HTML(200, "write.tmpl", gin.H{
 		"title": "Main website",
 	})
 }
 
 func SetUp(c *gin.Context) {
-	db, err := gorm.Open("sqlite3", "image.db")
-	if err != nil {
-		panic("can not open")
-	}
+	db := OpenDB()
 	defer db.Close()
 	db.AutoMigrate(&Image{}, &Article{}, &User{})
 }
 
 func GetArticle(c *gin.Context) {
 	uuid := c.Param("uuid")
-	db, err := gorm.Open("sqlite3", "image.db")
-	if err != nil {
-		panic("can not open")
-	}
+	db := OpenDB()
 	defer db.Close()
 	var article Article
 	db.Where("uuid = ?", uuid).First(&article)
@@ -66,7 +56,7 @@ func GetArticle(c *gin.Context) {
 	if username == "" {
 		username = "Unkown"
 	}
-	c.HTML(200, "post.html", gin.H{
+	c.HTML(200, "post.tmpl", gin.H{
 		"username": username,
 		"title":   title,
 		"content": content,
@@ -75,22 +65,18 @@ func GetArticle(c *gin.Context) {
 }
 
 func GetArticles(c *gin.Context) {
-	db, err := gorm.Open("sqlite3", "image.db")
-	if err != nil {
-		panic("can not open the db")
-	}
+	db := OpenDB()
+	defer db.Close()
 	var articles []Article
 	db.Order("created_at desc").Find(&articles)
-	c.HTML(200, "allarticle.html", gin.H{
+	c.HTML(200, "allarticle.tmpl", gin.H{
 		"articles": articles,
 	})
 }
 
 func Generate(c *gin.Context) {
-	db, err := gorm.Open("sqlite3", "image.db")
-	if err != nil {
-		panic("can not open the db")
-	}
+	db := OpenDB()
+	db.Close()
 	var articles []Article
 	db.Find(&articles)
 	sm := stm.NewSitemap(1)
@@ -114,7 +100,7 @@ func Signup(c *gin.Context)  {
 	if user != nil {
 		c.Redirect(303, "/")
 	} else{
-	c.HTML(200, "register.html", gin.H{
+	c.HTML(200, "register.tmpl", gin.H{
 	})
 	}
 }
@@ -125,7 +111,7 @@ func Login(c *gin.Context)  {
 	if user != nil {
 		c.Redirect(303, "/")
 	}
-	c.HTML(200, "login.html", gin.H{
+	c.HTML(200, "login.tmpl", gin.H{
 	})
 }
 
@@ -141,15 +127,13 @@ func GetUser(c *gin.Context)  {
 	if v == nil {
 		c.Redirect(303, "/")
 	}
-	db, err := gorm.Open("sqlite3", "image.db")
+	db := OpenDB()
+	defer db.Close()
 	var user User
 	db.Where("user_name=?", v).First(&user)
 	var articles []Article
 	db.Model(&user).Related(&articles)
-	if err != nil {
-		panic("db open failed")
-	}
-	c.HTML(200, "user.html", gin.H{
+	c.HTML(200, "user.tmpl", gin.H{
 		"user": user,
 		"articles": articles,
 	})
@@ -158,4 +142,17 @@ func GetUser(c *gin.Context)  {
 
 func GetUserInfo(c *gin.Context)  {
 	
+}
+
+func EditPost(c *gin.Context)  {
+	uuid := c.Param("uuid")
+	db := OpenDB()
+	var article Article
+	defer db.Close()
+	db.Where("uuid = ?", uuid).First(&article)
+	c.HTML(200, "edit.tmpl", gin.H{
+		"title": article.Title,
+		"content": article.Content,
+		"uuid": article.UUID,
+	})
 }
