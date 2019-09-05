@@ -37,7 +37,7 @@ func Write(c *gin.Context) {
 func SetUp(c *gin.Context) {
 	db := OpenDB()
 	defer db.Close()
-	db.AutoMigrate(&Image{}, &Article{}, &User{})
+	db.AutoMigrate(&Image{}, &Article{}, &User{}, &Topic{})
 }
 
 func GetArticle(c *gin.Context) {
@@ -76,7 +76,7 @@ func GetArticles(c *gin.Context) {
 
 func Generate(c *gin.Context) {
 	db := OpenDB()
-	db.Close()
+	defer db.Close()
 	var articles []Article
 	db.Find(&articles)
 	sm := stm.NewSitemap(1)
@@ -154,5 +154,11 @@ func EditPost(c *gin.Context)  {
 		"title": article.Title,
 		"content": article.Content,
 		"uuid": article.UUID,
+	})
+}
+
+func AddTopic(c *gin.Context)  {
+	c.HTML(200, "addtopic.tmpl", gin.H{
+		
 	})
 }

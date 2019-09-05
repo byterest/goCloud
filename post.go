@@ -122,3 +122,7 @@ func UpdatePost(c *gin.Context)  {
 	db.Where("uuid = ?", uuid).First(&article)
 	db.Model(&article).Updates(Article{Title: title, Content: content, Edited: true})
 }
+
+func AddTopicPost()  {
+	
+}

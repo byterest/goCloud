@@ -5,10 +5,11 @@
     <title>
        Prejudice
     </title>
-    <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css" />
     <meta charset="utf-8">
     <meta name="description" content="A website to share your code with others" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134629345-6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -21,11 +22,6 @@
         body {
             margin: 0 auto;
             width: 52em;
-        }
-        .main {
-            height: 100%;
-            border: 1px solid;
-            border-color: #e2e2e2;
         }
         .cell {
             margin: 4px 0;
@@ -49,6 +45,15 @@
         .controller {
             margin-left: 3px;
         }
+        .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        height: 60px;
+        background-color: #f5f5f5;
+    }
+
         @media all and (max-width: 768px) {
            body {
                margin: 0 auto;
@@ -63,9 +68,12 @@
 
 <body>
     <div class="main">
-        <div class="header">
-               <span class="imglogo" > <img style="height: 25px;" src="/media/images/logo/logo.png" alt=""> </span> <span class="logo">Prejudice</span> <span class="controller"> <a href="/p/new">NEW</a> </span> 
-        </div>
+            <header class="navbar">
+                <section class="navbar-section">
+                    <a href="..." class="navbar-brand mr-2">Prejudice</a>
+                    <a href="..." class="btn btn-link">Topics</a>
+                </section>
+                </header>
              
             <div>
                 {{range .articles}}
@@ -79,7 +87,13 @@
                 {{end}}
             </div>
     </div>
-            
+
+
+<footer> 
+<span>
+About US
+</span>
+</footer> 
 </body>
 
 </html>

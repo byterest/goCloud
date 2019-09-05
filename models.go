@@ -19,7 +19,7 @@ type Article struct {
 	UserId    int `gorm:"default:0"`
 	User      User
 	Edited    bool `gorm:"default:false"`
-	TopicsID  uint
+	TopicsID  uint `gorm:"default:0"`
 }
 // User 
 type User struct {
@@ -27,10 +27,11 @@ type User struct {
 	UserName string
 	Password string
 }
-// Topics
-type Topics struct {
+// Topic
+type Topic struct {
 	gorm.Model
 	Title        string
 	ImageURL     string
 	Description  string
 }
+

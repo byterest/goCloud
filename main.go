@@ -28,6 +28,7 @@ func main() {
 	router.GET("/user", GetUser)
 	router.GET("/user/:username", GetUserInfo)
 	router.GET("/post/:uuid/edit", EditPost)
+	router.GET("/addtopic", AddTopic)
 	// Post Method
 	router.POST("/signup", SignupPost)
 	router.POST("/upload", Upload)
