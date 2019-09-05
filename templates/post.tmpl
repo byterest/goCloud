@@ -44,10 +44,10 @@
             var a = document.getElementById("md");
             var converter = new showdown.Converter();
             text = {{.content }};
-        converter.setOption('tables', true)
-        html = converter.makeHtml(text);
-        a.innerHTML = html;
-        console.log(html);
+            converter.setOption('tables', true)
+            html = converter.makeHtml(text);
+            a.innerHTML = html;
+            console.log(html);
     }
         window.onload = function () {
             render();
