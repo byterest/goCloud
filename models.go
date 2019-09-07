@@ -19,7 +19,7 @@ type Article struct {
 	UserId    int `gorm:"default:0"`
 	User      User
 	Edited    bool `gorm:"default:false"`
-	TopicsID  uint `gorm:"default:0"`
+	TopicID  uint `gorm:"default:0"`
 }
 // User 
 type User struct {

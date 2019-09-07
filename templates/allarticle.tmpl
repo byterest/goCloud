@@ -19,9 +19,15 @@
         gtag('config', 'UA-134629345-6');
     </script>
     <style>
-        body {
+        {# body {
             margin: 0 auto;
             width: 52em;
+        } #}
+        a:hover {
+            text-decoration: none;
+        }
+        a:visited {
+            color: #5755d9;
         }
         .cell {
             margin: 4px 0;
@@ -46,14 +52,11 @@
             margin-left: 3px;
         }
         .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        /* Set the fixed height of the footer here */
-        height: 60px;
-        background-color: #f5f5f5;
-    }
-
+            padding:0;
+        }
+        footer {
+            background: #F7F8F9
+        }
         @media all and (max-width: 768px) {
            body {
                margin: 0 auto;
@@ -67,7 +70,13 @@
 </head>
 
 <body>
-    <div class="main">
+
+    <div class="container">
+  <div class="columns">
+    <div class="column col-12" style="background:#F7F8F9; height:15px;"></div>
+     <div class="column col-2 hide-xs hide-sm" style="background:#F7F8F9;"></div>
+    <div class="column col-8 col-xs-12 col-sm-12" >
+    
             <header class="navbar">
                 <section class="navbar-section">
                     <a href="/" class="navbar-brand mr-2">Prejudice</a>
@@ -75,7 +84,11 @@
                 </section>
                 </header>
              
-            <div>
+  </div>
+  <div class="column col-2 hide-xs hide-sm" style="background:#F7F8F9;"></div>
+
+  <div class="column col-mx-auto col-8 col-sm-12">
+    <div>
                 {{range .articles}}
                 <div class="cell">
                         <div class="item">
@@ -86,14 +99,21 @@
                     
                 {{end}}
             </div>
-    </div>
+  </div>
+</div>
 
+<div class="column col-mx-auto col-8 footer col-sm-12">
+        <footer> 
+<div>
 
-<footer> 
 <span>
-About US
+<a href="https://prejudice.io">prejudice.io</a>
 </span>
+<br>
+Powered By golang and <a href="https://www.vultr.com/?ref=7500386">VULTR</a>
+</div>
 </footer> 
+</div>
 </body>
 
 </html>

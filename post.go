@@ -123,6 +123,15 @@ func UpdatePost(c *gin.Context)  {
 	db.Model(&article).Updates(Article{Title: title, Content: content, Edited: true})
 }
 
-func AddTopicPost()  {
-	
+func AddTopicPost(c *gin.Context)  {
+	title := c.PostForm("title")
+	topiclogo := c.PostForm("topiclogo")
+	desc := c.PostForm("desc")
+	db := OpenDB()
+	defer db.Close()
+	db.Create(&Topic{
+		Title: title,
+		ImageURL: topiclogo,
+		Description: desc,
+	})
 }

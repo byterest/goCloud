@@ -5,16 +5,32 @@
     <meta charset="utf-8">
     <title>login</title>
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 
 <body>
-    <h1>login</h1>
+<div class="container">
+    <div class="columns">
+    <div class="column col-3 col-sm-0 hide-sm hide-xs"></div>
+    <div class="column col-6 col-sm-12">
+     <h1 style="text-align:center;">login</h1>
 
     <form action="/login" method="post">
-        User<input type="text" name="username"><br><br>
-        Password:<input type="password" name="password"><br><br>
-        <input type="submit" value="Submit">
+    <div class="form-group">
+    <label class="form-label" for="username">User</label>
+        <input class="form-input" type="text" name="username">
+        <br>
+        <br>
+        <label class="form-label" for="password">Password</label>
+        <input class="form-input" type="password" name="password"><br><br>
+    </div>
+        <input class="btn btn-primary" style="float:right;" type="submit" value="Submit">
     </form>
+    </div>
+    <div class="column col-3 col-sm-0 hide-sm hide-xs"></div>
+  </div>
+</div>
+   
 </body>

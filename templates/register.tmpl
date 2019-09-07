@@ -10,11 +10,27 @@
 </head>
 
 <body>
-    <p>signup</p>
+    <div class="container">
+    <div class="columns">
+    <div class="column col-3 col-sm-0 hide-sm hide-xs"></div>
+    <div class="column col-6 col-sm-12">
+     <h1 style="text-align:center;">sign up</h1>
+
     <form action="/signup" method="post">
-        User<input type="text" name="username"><br><br>
-        Password:<input type="password" name="password"><br><br>
-        Password:<input type="password" name="password1"><br><br>
-        <input type="submit" value="Submit">
+    <div class="form-group">
+    <label class="form-label" for="username">User</label>
+        <input class="form-input" type="text" name="username">
+        <br>
+        <br>
+        <label class="form-label" for="password">Password</label>
+        <input class="form-input" type="password" name="password"><br><br> 
+        <label class="form-label" for="password1">Password</label>
+        <input class="form-input" type="password" name="password1"><br><br>
+    </div>
+        <input class="btn btn-primary" style="float:right;" type="submit" value="Submit">
     </form>
+    </div>
+    <div class="column col-3 col-sm-0 hide-sm hide-xs"></div>
+  </div>
+</div>
 </body>
