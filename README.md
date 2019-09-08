@@ -1,19 +1,30 @@
-It is a lightweight cloud written in golang and thanks for gorm and gin
-
-
-### How to install
-just clone it to your server and install some dependces
-
-gorm gin sqlite3
-
-
-### How to run
-```go
+### How to install and run it
+First you are supposed to pull it to your directory.
+```bash
 git clone https://github.com/luowanshun/goCloud.git
 go build
 sh start.sh
 ```
-go to the browser localhost:8080/setup to migrate the database
+This application will run on 127.0.0.1:8080
+### Migrate the database
+In your browser, enter the 127.0.0.1:8080/setup
+### How to stop
+```bash
+sh kill.sh
+```
+### Tips
+If you can not build the sqlite3, you should install gcc first.
+### Thanks
+https://github.com/gin-gonic/gin
 
 
-you will get the url after you upload it to your server
+https://github.com/jinzhu/gorm
+
+
+https://github.com/ikeikeikeike/go-sitemap-generator
+
+
+https://github.com/highlightjs/highlight.js
+
+
+https://github.com/sparksuite/simplemde-markdown-editor
