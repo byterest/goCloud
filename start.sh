@@ -1,1 +1,1 @@
-nohup ./goCloud &
+nohup ./prejudice &

@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
-	"gopkg.in/ikeikeikeike/go-sitemap-generator.v2/stm"
+	"github.com/ikeikeikeike/go-sitemap-generator/v2/stm"
 	"github.com/gin-contrib/sessions"
 )
 

@@ -1,6 +1,6 @@
 public/images/*
 !public/images/logo/
 image.db
-goCloud.exe
 public/sitemaps/*
 .env
+.prejudice.exe
