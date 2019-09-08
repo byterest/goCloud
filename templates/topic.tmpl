@@ -1,0 +1,15 @@
+<p>
+{{.title}}
+</p>
+<p>
+{{.desc}}
+</p>
+<p><img src="/media/topiclogo/{{.logo}}" ></p>
+
+{{range .articles}}
+<div class="cell">
+    <div class="item">
+        <a href="/post/{{.UUID}}">{{.Title}}</a><br>
+    </div>
+</div>
+{{end}}

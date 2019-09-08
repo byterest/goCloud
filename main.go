@@ -29,12 +29,15 @@ func main() {
 	router.GET("/user/:username", GetUserInfo)
 	router.GET("/post/:uuid/edit", EditPost)
 	router.GET("/addtopic", AddTopic)
+	router.GET("/topics", GetTopics)
+	router.GET("/topics/:topictitle", GetTopic)
 	// Post Method
 	router.POST("/signup", SignupPost)
 	router.POST("/upload", Upload)
 	router.POST("/writein", WriteIn)
 	router.POST("/login", LoginPost)
 	router.POST("/update", UpdatePost)
+	router.POST("/addtopic", AddTopicPost)
 	// Get the env 
 	godotenv.Load()
 	port := os.Getenv("port")

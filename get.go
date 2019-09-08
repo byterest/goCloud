@@ -162,3 +162,32 @@ func AddTopic(c *gin.Context)  {
 		
 	})
 }
+
+func GetTopics(c *gin.Context)  {
+	db := OpenDB()
+	defer db.Close()
+	var topics []Topic
+	db.Find(&topics)
+	c.HTML(200, "topics.tmpl", gin.H{
+		"topics": topics,
+	})
+}
+
+func GetTopic(c *gin.Context)  {
+	db := OpenDB()
+	defer db.Close()
+	var topic Topic
+	title := c.Param("topictitle")
+	db.Where("title = ?", title).Find(&topic)
+	ID := topic.ID
+	var articles []Article
+	db.Where("topic_id = ?", ID).Find(&articles)
+	desc := topic.Description
+	logo := topic.ImageURL
+	c.HTML(200, "topic.tmpl", gin.H{
+		"title": title,
+		"desc" : desc,
+		"logo" : logo,
+		"articles": articles,
+	})
+}
