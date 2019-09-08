@@ -31,6 +31,10 @@ func main() {
 	router.GET("/addtopic", AddTopic)
 	router.GET("/topics", GetTopics)
 	router.GET("/topics/:topictitle", GetTopic)
+
+	// static pages
+	router.GET("/about.html", AboutPage)
+	router.GET("/contact.html", ContactPage)
 	// Post Method
 	router.POST("/signup", SignupPost)
 	router.POST("/upload", Upload)

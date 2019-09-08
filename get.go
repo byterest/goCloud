@@ -191,3 +191,15 @@ func GetTopic(c *gin.Context)  {
 		"articles": articles,
 	})
 }
+
+func AboutPage(c *gin.Context)  {
+	c.HTML(200, "about.tmpl", gin.H{
+
+	})
+}
+
+func ContactPage(c *gin.Context)  {
+	c.HTML(200, "contact.tmpl", gin.H{
+
+	})
+}
