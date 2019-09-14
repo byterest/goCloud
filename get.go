@@ -68,7 +68,7 @@ func GetArticles(c *gin.Context) {
 	db := OpenDB()
 	defer db.Close()
 	var articles []Article
-	db.Order("created_at desc").Find(&articles)
+	db.Order("created_at desc").Limit(30).Find(&articles)
 	c.HTML(200, "allarticle.tmpl", gin.H{
 		"articles": articles,
 	})
